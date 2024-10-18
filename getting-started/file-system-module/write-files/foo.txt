@@ -1,0 +1,6 @@
+Hi, World sync!
+Hi, World callback!
+Hi, World async!
+Hi, World sync!
+Hi, World callback!
+Hi, World async!
