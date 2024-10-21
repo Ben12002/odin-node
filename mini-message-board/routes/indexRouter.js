@@ -1,11 +1,10 @@
 const { Router } = require("express");
-const messages = require('../db');
 const indexRouter = Router();
 
 
-
 indexRouter.get("/", (req, res, next) => {
-  res.render('index', { messages: messages });
+  res.render('index');
 });
+
 
 module.exports = indexRouter;

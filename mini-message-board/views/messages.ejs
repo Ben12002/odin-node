@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mini Message Board</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <h1>Mini Message Board</h1>
+  <a href="/new">Go to new</a>
+  <a href="/">Go Home</a>
+  <% messages.map((message) => { %>
+    <div class="card">
+      <a href="/messages/<%= message.id %>"> see message detail </a>
+      <h3><%= message.user %></h3>
+      <p><%= message.text %></p>
+      <p><%= message.added %></p>
+    </div>
+  <% }) %>
+</body>
+</html>
