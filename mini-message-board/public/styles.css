@@ -1,6 +1,7 @@
 body {
   display: flex;
   flex-direction: column;
+  padding: 8px;
 }
 
 p, h3 {
