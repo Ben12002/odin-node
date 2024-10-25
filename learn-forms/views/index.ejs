@@ -3,19 +3,21 @@
 <html>
 <head>
   <title><%= title %></title>
+  <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
   <h1><%= title %></h1>
-  <ul>
+  <ul class="cards">
     <% if (locals.users) {%>
       <% users.forEach(user => { %>
-        <li>
-          ID: <%= user.id %>, Name: <%= user.firstName %> <%= user.lastName %>
-        </li>
-        <a href="/<%= user.id %>/update">Update a user</a>
-        <form action="/<%= user.id %>/delete" method="POST" style="display:inline;">
-          <button type="submit" onclick="return confirm('Are you sure you want to delete this user?');">Delete</button>
-        </form>
+        <div class="card">
+          <li> ID: <%= user.id %></li>
+          <li>Name: <%= user.firstName %> <%= user.lastName %></li>
+          <a href="/<%= user.id %>/update">Update</a>
+          <form action="/<%= user.id %>/delete" method="POST" style="display:inline;">
+            <button type="submit" onclick="return confirm('Are you sure you want to delete this user?');">Delete</button>
+          </form>
+        </div>
       <% }); %>
     <% } %>
   </ul>
