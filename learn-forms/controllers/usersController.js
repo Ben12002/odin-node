@@ -37,6 +37,16 @@ const validateUser = [
   body("lastName").trim()
     .isAlpha().withMessage(`Last name ${alphaErr}`)
     .isLength({min :1, max: 10}).withMessage(`Last name ${lengthErr}`),
+  
+  body("email").trim()
+  .isEmail().withMessage(`Must be an email`),
+
+  body("age").trim()
+  .isInt({min: 18, max: 120}).withMessage(`Must be a number`),
+  
+  body("bio")
+    .optional()
+    .isLength({max: 200}).withMessage(`Maximum 200 characters`),
 ]
 
 // Pass an array of middleware functions to controller
@@ -50,8 +60,8 @@ exports.usersCreatePost = [
         errors: errors.array(),
       });
     }
-    const {firstName, lastName} = req.body;
-    usersStorage.addUser({firstName, lastName});
+    const {firstName, lastName, email, age, bio} = req.body;
+    usersStorage.addUser({firstName, lastName, email, age, bio});
     res.redirect("/");
   }
 ]
@@ -78,8 +88,8 @@ exports.usersUpdatePost = [
         errors: errors.array(),
       });
     }
-    const { firstName, lastName } = req.body;
-    usersStorage.updateUser(id, {firstName, lastName });
+    const { firstName, lastName, email, age, bio } = req.body;
+    usersStorage.updateUser(id, {firstName, lastName, email, age, bio });
     res.redirect("/");
   }
 ]
