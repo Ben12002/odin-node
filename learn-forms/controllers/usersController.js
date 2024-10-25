@@ -98,3 +98,24 @@ exports.usersDeletePost = (req, res) => {
   usersStorage.deleteUser(req.params.id);
   res.redirect("/");
 }
+
+const validateSearch = [
+  body("firstName").trim()
+  .isAlpha().withMessage(`First name ${alphaErr}`)
+  .isLength({min :1, max: 10}).withMessage(`First name ${lengthErr}`),
+]
+
+exports.usersSearchGet = [
+  validateSearch, 
+  (req, res) => {
+  const { firstName } = req.query;
+  const user = usersStorage.searchUser(firstName);
+
+  if (!user) {
+    res.status(404).render("index", {
+      title: "User List",
+      users: usersStorage.getUsers(),
+    });
+  }
+  res.render('search', {user});
+}]

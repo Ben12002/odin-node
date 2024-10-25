@@ -28,6 +28,15 @@ class UsersStorage {
   deleteUser(id) {
     delete this.storage[id];
   }
+
+  searchUser(firstName) {
+    for (const [key, value] of Object.entries(this.storage)) {
+      if (value.firstName == firstName){
+        return value;
+      }
+    }
+    return;
+  }
 }
 
 // Rather than exporting the class, we can export an instance of the class by instantiating it.

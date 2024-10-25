@@ -14,4 +14,6 @@ usersRouter.post("/:id/update", usersController.usersUpdatePost); // Handle upda
 usersRouter.post("/:id/delete", usersController.usersDeletePost); // Delete User
 // No need for GET route for delete, since we're redirecting to "/" in usersDeletePost anyway.
 
+usersRouter.get("/search", usersController.usersSearchGet);
+
 module.exports = usersRouter;
