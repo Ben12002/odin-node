@@ -10,4 +10,8 @@ usersRouter.post("/create", usersController.usersCreatePost); // Handle create u
 usersRouter.get("/:id/update", usersController.usersUpdateGet); // Render form page for updating user
 usersRouter.post("/:id/update", usersController.usersUpdatePost); // Handle update user form submission
 
+
+usersRouter.post("/:id/delete", usersController.usersDeletePost); // Delete User
+// No need for GET route for delete, since we're redirecting to "/" in usersDeletePost anyway.
+
 module.exports = usersRouter;
